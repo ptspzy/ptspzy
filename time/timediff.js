@@ -4,7 +4,7 @@
     } else if (typeof exports === 'object') {
         module.exports = factory();
     } else {
-        root.fromNow = factory();
+        root.timeDiffFrom = factory();
     }
 }(this, function () {
     'use strict';
