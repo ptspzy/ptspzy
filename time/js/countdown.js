@@ -150,8 +150,8 @@ function render(con) {
     var curentTime = new Date();
     var msDay = 24 * 60 * 60;
 
-    var days = Math.round(getDiffTimeSeconds() / msDay);
-    console.log(days)
+    var days = parseInt(getDiffTimeSeconds() / msDay) ;
+
     var hours = curentTime.getHours();
     var minutes = curentTime.getMinutes();
     var seconds = curentTime.getSeconds();
