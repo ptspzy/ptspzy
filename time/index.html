@@ -1,0 +1,295 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <title>牛牛纪念日</title>
+    <style>
+        body, html {  width: 100%; overflow-x: hidden;}
+        .cow {
+            bottom: 0;
+            height: 112vw;
+            left: 0;
+            margin: auto;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 100vw;
+            transform: scale(1);
+            animation: cow 15s infinite alternate linear;
+        }
+
+        #whole_head {
+            transform: translate(0, 1px);
+            animation: updown .8s infinite linear;
+        }
+
+        #leg_left {
+            transform: translate(0, 1px);
+            animation: updown .4s infinite linear;
+        }
+
+
+        @keyframes cow {
+            to {
+                transform: scale(0);
+            }
+        }
+
+        @keyframes updown{
+            to {
+                transform: translate(0);
+            }
+        }
+
+        }
+        body {
+            background: #000;
+            perspective: 340px;
+        }
+    </style>
+    <style>
+        @keyframes beat {
+            0% {transform: scale(1) rotate(225deg); box-shadow:0 0 40px #d5093c;}
+            50% {transform: scale(1.1) rotate(225deg); box-shadow:0 0 70px #d5093c;}
+            100% {transform: scale(1) rotate(225deg); box-shadow:0 0 40px #d5093c;}
+        }
+
+        #background {
+            position:fixed;
+            top:0;
+            left:0;
+            z-index:-1;
+            width:100%;
+            height:100%;
+            background: #ffa5a5;
+            background: -moz-linear-gradient(top, #ffa5a5 0%, #ffd3d3 100%);
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffa5a5), color-stop(100%,#ffd3d3));
+            background: -webkit-linear-gradient(top, #ffa5a5 0%,#ffd3d3 100%);
+            background: linear-gradient(top, #ffa5a5 0%,#ffd3d3 100%);
+        }
+        #chest {
+            position:relative;
+            width:500px;
+            height:500px;
+            margin:0 auto;
+        }
+        .heart {
+            position:absolute;
+            z-index:2;
+            background: -moz-linear-gradient(-90deg, #F50A45 0%, #d5093c 40%);
+            background: -webkit-gradient(linear, right 50%, left 50%, color-stop(0%,#F50A45), color-stop(40%,#d5093c));
+            background: -webkit-linear-gradient(-90deg, #F50A45 0%,#d5093c 40%);
+            background: linear-gradient(-90deg, #F50A45 0%,#d5093c 40%);
+            -webkit-animation: beat 0.7s ease 0s infinite normal;
+            -moz-animation: beat 0.7s ease 0s infinite normal;
+            animation: beat 0.7s ease 0s infinite normal;
+        }
+        .heart.center {
+            background: -moz-linear-gradient(-45deg, #B80734 0%, #d5093c 40%);
+            background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#B80734), color-stop(40%,#d5093c));
+            background: -webkit-linear-gradient(-45deg, #B80734 0%,#d5093c 40%);
+            background: linear-gradient(-45deg, #B80734 0%,#d5093c 40%);
+        }
+        .heart.top {
+            z-index:3;
+        }
+        .side {
+            top:100px;
+            width:220px;
+            height:220px;
+            border-radius: 220px;
+        }
+        .center {
+            width:210px;
+            height:210px;
+            bottom:100px;
+            left:145px;
+            font-size:0;
+            text-indent:-9999px;
+        }
+        .left {
+            left:62px;
+        }
+        .right {
+            right:62px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" style="display:block;margin:100px auto;">
+        当前浏览器不支持Canvas，请更换浏览器后再试
+    </canvas>
+    <canvas id="canvasHeart" style="display:block;margin:100px auto;">
+        当前浏览器不支持Canvas，请更换浏览器后再试
+    </canvas>
+    <div id="background"></div>
+    <div id="chest">
+        <div class="heart left side top"></div>
+        <div class="heart center">&hearts;</div>
+        <div class="heart right side"></div>
+    </div>
+    <div class="cow">
+        <svg viewBox="0 0 100.9 120" class="cowSVG">
+
+            <defs>
+                <g id="leg">
+                    <rect class="path" x="34.6" y="93.2" fill="currentColor" width="10.9" height="15" />
+                    <path fill="#3D3D3C" d="M40,110.1c0.5,0,0.8,0.4,0.8,0.8v2.1h8.7c0-5.2-4.2-9.5-9.5-9.5c-5.2,0-9.5,4.2-9.5,9.5					h8.5v-2.1C39.1,110.5,39.5,110.1,40,110.1z" />
+                </g>
+
+                <g id="ear">
+                    <path fill="#3D3D3C" d="M0,5.3c0,0,3.1,21.2,15,21.2c11.9,0,15.9,0,15.9,0S25.4,5.3,13.5,5.3
+				C1.6,5.3,0,5.3,0,5.3z" />
+                    <path fill="#D86D7A" d="M5.5,9.1c0,0,2,13.7,9.7,13.7c7.7,0,10.3,0,10.3,0S21.9,9.1,14.2,9.1S5.5,9.1,5.5,9.1z" />
+                </g>
+
+                <g id="half_head">
+                    <path fill="currentColor" d="M32.2,6.7c1.1,0.7,12.9,8.5,12.3,27c-0.6,19.3-25.1,10.1-25.4,10
+				c-0.1,1.2-0.2,2.4-0.3,3.7c0,0.5,0,0.9,0,1.4c0,15.8,13.3,28.6,31.7,28.6V0C43.4,0,37,2.6,32.2,6.7z" />
+                    <path fill="#3D3D3C" d="M44.5,33.7C45,15.1,33.3,7.4,32.2,6.7c-4.6,3.9-7.7,9-8.5,14.5c0,0.1-0.1,0.3-0.1,0.4
+				c0,0-1.2,5.1-1.7,7.7c-1,5.3-2.2,9.4-2.8,14.3C19.4,43.8,43.9,53,44.5,33.7z" />
+                </g>
+
+                <circle id="nose_dot" fill="#D86D7A" cx="34.9" cy="59.5" r="3.7" />
+
+                <g id="eye">
+                    <circle fill="currentColor" cx="36.2" cy="28.4" r="5.9" />
+                    <circle fill="#3D3D3C" cx="36.2" cy="28.4" r="4.2" />
+                    <circle id="eye_dot" fill="#FFFFFF" cx="37.8" cy="27.2" r="1.5" />
+                </g>
+            </defs>
+
+            <!-- legs -->
+            <use id="leg_left" xlink:href="#leg" style="color:#D3C5C1" />
+            <use id="leg_right" xlink:href="#leg" style="color:#F6E9E5" transform="translate(20.8,0)" />
+
+            <g id="body_left">
+                <path fill="#D3C5C1" d="M50.5,84.1c15.7,0,29-8,33.3-18.9c-4.2-14.6-17.5-22.6-33.3-22.6c-15.7,0-29,8-33.3,22.6
+				C21.4,76.1,34.7,84.1,50.5,84.1z" />
+                <path fill="#D3C5C1" d="M17.2,65.1c-0.9,3.2-1.4,6.6-1.4,10.4c0,14.6,15.5,26.4,34.7,26.4V84.1
+				C34.7,84.1,21.4,76.1,17.2,65.1z" />
+                <path id="spot_1" fill="#3D3D3C" d="M32,86.3c0,0-2.2-2.4-0.8-4.8s5.3,0.8,5.3,0.8s3.7,2.4,4.7,2.7c3.9,1.2,3.3,5.1-1.4,7
+			C36.4,93.4,32,86.3,32,86.3z" />
+            </g>
+
+            <g id="body_right">
+                <path fill="#F6E9E5" d="M67.8,85.7c0.7-3.1,4.6-3.9,5.9-6.6c1.3-2.7,8.8-6,11.4-2.6c0-0.3,0.1-0.6,0.1-0.9
+				c0-3.8-0.5-7.3-1.4-10.4c-4.2,10.9-17.5,18.9-33.3,18.9V102c9.4,0,17.9-2.9,24.2-7.5c-1.8-0.3-3.6-1-5.2-2.6
+				C69.5,91.8,67.1,88.9,67.8,85.7z" />
+                <path fill="#3D3D3C" d="M85.1,76.5c-2.6-3.4-10.1-0.1-11.4,2.6c-1.3,2.7-5.2,3.5-5.9,6.6
+				c-0.7,3.1,1.7,6.1,1.7,6.1c1.6,1.6,3.4,2.4,5.2,2.6C80.9,89.9,84.8,83.5,85.1,76.5z" />
+            </g>
+
+            <!-- ears -->
+            <use xlink:href="#ear" />
+            <use xlink:href="#ear" transform="translate(101,0) scale(-1,1)" />
+
+            <!-- head -->
+            <g id="whole_head">
+                <use xlink:href="#half_head" style="color:#D3C5C1" />
+                <use xlink:href="#half_head" style="color:#F6E9E5;" transform="translate(101,0) scale(-1,1)" />
+
+                <ellipse fill="#F19EA0" cx="50.5" cy="62.1" rx="26.1" ry="17.1" />
+                <use xlink:href="#nose_dot" />
+                <use xlink:href="#nose_dot" transform="translate(31.2,0)" />
+
+                <use xlink:href="#eye" style="color:#D3C5C1" />
+                <use xlink:href="#eye" style="color:#F4F0F2" transform="translate(30.3,0)" />
+            </g>
+
+        </svg>
+    </div>
+    <div class="cow">
+        <svg viewBox="0 0 100.9 120" class="cowSVG">
+
+            <defs>
+                <g id="leg">
+                    <rect class="path" x="34.6" y="93.2" fill="currentColor" width="10.9" height="15" />
+                    <path fill="#3D3D3C" d="M40,110.1c0.5,0,0.8,0.4,0.8,0.8v2.1h8.7c0-5.2-4.2-9.5-9.5-9.5c-5.2,0-9.5,4.2-9.5,9.5					h8.5v-2.1C39.1,110.5,39.5,110.1,40,110.1z" />
+                </g>
+
+                <g id="ear">
+                    <path fill="#3D3D3C" d="M0,5.3c0,0,3.1,21.2,15,21.2c11.9,0,15.9,0,15.9,0S25.4,5.3,13.5,5.3
+				C1.6,5.3,0,5.3,0,5.3z" />
+                    <path fill="#D86D7A" d="M5.5,9.1c0,0,2,13.7,9.7,13.7c7.7,0,10.3,0,10.3,0S21.9,9.1,14.2,9.1S5.5,9.1,5.5,9.1z" />
+                </g>
+
+                <g id="half_head">
+                    <path fill="currentColor" d="M32.2,6.7c1.1,0.7,12.9,8.5,12.3,27c-0.6,19.3-25.1,10.1-25.4,10
+				c-0.1,1.2-0.2,2.4-0.3,3.7c0,0.5,0,0.9,0,1.4c0,15.8,13.3,28.6,31.7,28.6V0C43.4,0,37,2.6,32.2,6.7z" />
+                    <path fill="#3D3D3C" d="M44.5,33.7C45,15.1,33.3,7.4,32.2,6.7c-4.6,3.9-7.7,9-8.5,14.5c0,0.1-0.1,0.3-0.1,0.4
+				c0,0-1.2,5.1-1.7,7.7c-1,5.3-2.2,9.4-2.8,14.3C19.4,43.8,43.9,53,44.5,33.7z" />
+                </g>
+
+                <circle id="nose_dot" fill="#D86D7A" cx="34.9" cy="59.5" r="3.7" />
+
+                <g id="eye">
+                    <circle fill="currentColor" cx="36.2" cy="28.4" r="5.9" />
+                    <circle fill="#3D3D3C" cx="36.2" cy="28.4" r="4.2" />
+                    <circle id="eye_dot" fill="#FFFFFF" cx="37.8" cy="27.2" r="1.5" />
+                </g>
+            </defs>
+
+            <!-- legs -->
+            <use id="leg_left" xlink:href="#leg" style="color:#D3C5C1" />
+            <use id="leg_right" xlink:href="#leg" style="color:#F6E9E5" transform="translate(20.8,0)" />
+
+            <g id="body_left">
+                <path fill="#D3C5C1" d="M50.5,84.1c15.7,0,29-8,33.3-18.9c-4.2-14.6-17.5-22.6-33.3-22.6c-15.7,0-29,8-33.3,22.6
+				C21.4,76.1,34.7,84.1,50.5,84.1z" />
+                <path fill="#D3C5C1" d="M17.2,65.1c-0.9,3.2-1.4,6.6-1.4,10.4c0,14.6,15.5,26.4,34.7,26.4V84.1
+				C34.7,84.1,21.4,76.1,17.2,65.1z" />
+                <path id="spot_1" fill="#3D3D3C" d="M32,86.3c0,0-2.2-2.4-0.8-4.8s5.3,0.8,5.3,0.8s3.7,2.4,4.7,2.7c3.9,1.2,3.3,5.1-1.4,7
+			C36.4,93.4,32,86.3,32,86.3z" />
+            </g>
+
+            <g id="body_right">
+                <path fill="#F6E9E5" d="M67.8,85.7c0.7-3.1,4.6-3.9,5.9-6.6c1.3-2.7,8.8-6,11.4-2.6c0-0.3,0.1-0.6,0.1-0.9
+				c0-3.8-0.5-7.3-1.4-10.4c-4.2,10.9-17.5,18.9-33.3,18.9V102c9.4,0,17.9-2.9,24.2-7.5c-1.8-0.3-3.6-1-5.2-2.6
+				C69.5,91.8,67.1,88.9,67.8,85.7z" />
+                <path fill="#3D3D3C" d="M85.1,76.5c-2.6-3.4-10.1-0.1-11.4,2.6c-1.3,2.7-5.2,3.5-5.9,6.6
+				c-0.7,3.1,1.7,6.1,1.7,6.1c1.6,1.6,3.4,2.4,5.2,2.6C80.9,89.9,84.8,83.5,85.1,76.5z" />
+            </g>
+
+            <!-- ears -->
+            <use xlink:href="#ear" />
+            <use xlink:href="#ear" transform="translate(101,0) scale(-1,1)" />
+
+            <!-- head -->
+            <g id="whole_head">
+                <use xlink:href="#half_head" style="color:#D3C5C1" />
+                <use xlink:href="#half_head" style="color:#F6E9E5;" transform="translate(101,0) scale(-1,1)" />
+
+                <ellipse fill="#F19EA0" cx="50.5" cy="62.1" rx="26.1" ry="17.1" />
+                <use xlink:href="#nose_dot" />
+                <use xlink:href="#nose_dot" transform="translate(31.2,0)" />
+
+                <use xlink:href="#eye" style="color:#D3C5C1" />
+                <use xlink:href="#eye" style="color:#F4F0F2" transform="translate(30.3,0)" />
+            </g>
+
+        </svg>
+    </div>
+    <script src="js/digit.js"></script>
+    <script src="js/countdown.js"></script>
+    <script>
+        (function draw() {
+            var canvas = document.getElementById('canvasHeart');
+            if (canvas.getContext){
+                var ctx = canvas.getContext('2d');
+
+                //二次曲线
+                ctx.beginPath();
+                ctx.moveTo(75,40);
+                ctx.bezierCurveTo(75,37,70,25,50,25);
+                ctx.bezierCurveTo(20,25,20,62.5,20,62.5);
+                ctx.bezierCurveTo(20,80,40,102,75,120);
+                ctx.bezierCurveTo(110,102,130,80,130,62.5);
+                ctx.bezierCurveTo(130,62.5,130,25,100,25);
+                ctx.bezierCurveTo(85,25,75,37,75,40);
+                ctx.fillStyle = "#D5093C";
+                ctx.fill();
+            }
+        })()
+    </script>
+</body>
+</html>
