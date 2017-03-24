@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+    </script>
+</head>
+<body>
+<canvas id="canvas" style="display:block;margin:50px auto;">
+    当前浏览器不支持Canvas，请更换浏览器后再试
+</canvas>
+<script>
+    digit =
+        [
+            [
+                [0, 0, 1, 1, 1, 0, 0],
+                [0, 1, 1, 0, 1, 1, 0],
+                [1, 1, 0, 0, 0, 1, 1],
+                [1, 1, 0, 0, 0, 1, 1],
+                [1, 1, 0, 0, 0, 1, 1],
+                [1, 1, 0, 0, 0, 1, 1],
+                [1, 1, 0, 0, 0, 1, 1],
+                [1, 1, 0, 0, 0, 1, 1],
+                [0, 1, 1, 0, 1, 1, 0],
+                [0, 0, 1, 1, 1, 0, 0]
+            ],//0
+            [
+                [0, 0, 1, 1, 1, 0, 0],
+                [0, 1, 1, 0, 1, 1, 0],
+                [1, 1, 0, 0, 0, 1, 1],
+                [1, 1, 0, 0, 0, 1, 1],
+                [1, 1, 0, 0, 0, 1, 1],
+                [1, 1, 0, 0, 0, 1, 1],
+                [1, 1, 0, 0, 0, 1, 1],
+                [1, 1, 0, 0, 0, 1, 1],
+                [0, 1, 1, 0, 1, 1, 0],
+                [0, 0, 1, 1, 1, 0, 0]
+            ],//0
+            [
+                [1, 1, 0, 0, 0, 0, 0],
+                [1, 1, 0, 0, 0, 0, 0],
+                [1, 1, 0, 0, 0, 0, 0],
+                [1, 1, 0, 0, 0, 0, 0],
+                [1, 1, 1, 1, 1, 1, 1],
+                [1, 1, 1, 1, 1, 1, 1],
+                [1, 1, 0, 0, 0, 1, 1],
+                [1, 1, 0, 0, 0, 1, 1],
+                [1, 1, 0, 0, 0, 1, 1],
+                [1, 1, 0, 0, 0, 1, 1]
+            ]//h
+        ];
+
+    WINDOW_WIDTH = document.documentElement.clientWidth;
+    WINDOW_HEIGHT = document.documentElement.clientHeight;
+
+    var RADIUS = 8;
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext("2d");
+
+    canvas.width = WINDOW_WIDTH;
+    canvas.height = WINDOW_HEIGHT;
+
+    renderDigit(0, 0, 0, context);//先绘制
+    renderDigit(200, 0, 1, context);//先绘制
+
+    function renderDigit(x, y, num, con) {
+
+        con.fillStyle = "rgb(0,102,153)";
+
+        for (var i = 0; i < digit[num].length; i++)
+            for (var j = 0; j < digit[num][i].length; j++)
+                if (digit[num][i][j] == 1) {
+                    con.beginPath();
+                    con.arc(x + j * 2 * (RADIUS + 1) + (RADIUS + 1), y + i * 2 * (RADIUS + 1) + (RADIUS + 1), RADIUS, 0, 2 * Math.PI);
+                    con.closePath();
+
+                    con.fill();
+                }
+    }
+</script>
+</body>
+</html>
